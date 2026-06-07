@@ -1,0 +1,31 @@
+[project]
+name = "local-rerank-service"
+version = "0.1.0"
+description = "Self-hosted Cohere-compatible rerank service with on-demand VRAM management"
+readme = "README.md"
+requires-python = ">=3.11,<3.13"
+dependencies = [
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.32",
+    "pydantic-settings>=2.6",
+    "python-dotenv>=1.0",
+    "numpy>=1.26,<2.3",
+    "pandas>=2.2,<2.3",
+    "pyarrow>=18,<19",
+    "scikit-learn>=1.5,<1.7",
+    "sentence-transformers>=3.3.1,<3.4",
+    "transformers>=4.44,<4.50",
+    "torch>=2.5,<2.7",
+    "httpx>=0.28",
+]
+
+[project.scripts]
+rerank-server = "app.main:run"
+
+[[tool.uv.index]]
+name = "pytorch-cu124"
+url = "https://download.pytorch.org/whl/cu124"
+explicit = true
+
+[tool.uv.sources]
+torch = { index = "pytorch-cu124" }

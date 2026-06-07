@@ -216,3 +216,7 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Local model weights (download via scripts or huggingface-cli)
+models/*
+!models/.gitkeep
